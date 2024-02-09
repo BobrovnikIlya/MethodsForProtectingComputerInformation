@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laba 1</title>
+  <link rel="stylesheet" th:href="@{css/styleLaba1.css}">
+</head>
+<body>
+  <ul>
+    <li><a class="active" href="/Home">Лаба 1</a></li>
+    <li><a href="/Simplex">Лаба 2</a></li>
+    <li><a href="/Hook">Лаба 3</a></li>
+    <li><a href="/ForUser">Лаба 4</a></li>
+    <li><a href="/About">Лаба 5</a></li>
+  </ul>
+  <div class = "container">
+    <!-- Text Input Field -->
+    <p>Входной текст</p>
+    <input type="text" placeholder="" id = "inputText">
+
+    <br>
+    <!-- Input Field and Button -->
+    <div>
+      <p>Длина ключа</p>
+      <input type="number" placeholder="Введите длину ключа">
+      <button>Сгенерировать</button>
+    </div>
+    <!-- Two Tables -->
+    <table>
+      <thead>
+      <tr>
+        <th>Table 1 Header 1</th>
+        <th>Table 1 Header 2</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+      </tr>
+      <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Table 2 Header 1</th>
+        <th>Table 2 Header 2</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Data 3</td>
+        <td>Data 4</td>
+      </tr>
+      <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+
+    <!-- Buttons in a Row -->
+    <div class="button-row">
+      <button onclick="buttonClick(1)">Заполнить таблицу</button>
+      <button onclick="buttonClick(2)">Шифровать текст</button>
+      <button onclick="buttonClick(3)">Расшифровать текст</button>
+    </div>
+
+    <!-- Text Input Field for Language -->
+    <p>Результат операции</p>
+    <input type="text" placeholder="">
+  </div>
+</body>
+</html>
