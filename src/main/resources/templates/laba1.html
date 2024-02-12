@@ -40,9 +40,10 @@
 
     <table>
       <tbody>
-<!--      <tr th:each="char, index: ${#strings.toList(text)}">
-        <td th:text="${char}" th:if="${index.index % columns == 0}"></td>
-      </tr>-->
+      <tr th:each="row : ${charArray}">
+        <td th:each="char : ${row}"><span th:text="${char}"></span></td>
+      </tr>
+
       </tbody>
     </table>
 

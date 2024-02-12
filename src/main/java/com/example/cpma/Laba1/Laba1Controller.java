@@ -32,6 +32,8 @@ public class Laba1Controller {
         view.addObject("numbers", task.getPermutation());
         view.addObject("inputKey", task.getKey());
         view.addObject("textOutput", result);
+        view.addObject("charArray", task.getTextSpell());
+
         System.out.println("Отображение страницы с первой лабой");
         return view;
     }
@@ -51,12 +53,9 @@ public class Laba1Controller {
     public ModelAndView inputTable() {
         System.out.println("Заполнение таблицы");
 
+        task.setTextSpell(VerticalPermutationCipher.textSpell(task.getText(), task.getKey()));
 
-        ModelAndView view = new ModelAndView("/laba1");
-        view.addObject("text", task.getText());
-        view.addObject("columns", task.getKey());
-
-        return view;
+        return new ModelAndView("redirect:/laba1");
     }
 
     @PostMapping("/encryptedText")
@@ -80,32 +79,6 @@ public class Laba1Controller {
         result = task.getDecrypted();
         return new ModelAndView("redirect:/laba1");
     }
-
-/*    @PostMapping("/redirect")
-    public ModelAndView redirect(@RequestParam String option, @ModelAttribute Task task, HttpSession session) {
-        System.out.println("Произведение расчетов...");
-        task.setListWrapper();
-        System.out.println("Передача данных с клиента на сервер");
-        if (option.equals("Simplex")) {
-            System.out.println("Запуск решения симплекс-методом");
-            CompleteSimplex completeSimplex = SimplexMethod.getCompleteTask(task);
-            System.out.println("Сохранение результатов...");
-            session.setAttribute("task",task);
-            session.setAttribute("simplex",completeSimplex);
-            System.out.println("Результаты сохранены. Переход к отображению результатов");
-            return new ModelAndView("redirect:/Simplex");
-        } else if (option.equals("Hook")) {
-            System.out.println("Запуск решения методом Хука-Дживса");
-            CompleteHook completeHook =  HookMethods.solveResult(task);
-            System.out.println("Сохранение результатов...");
-            session.setAttribute("task",task);
-            session.setAttribute("hook",completeHook);
-            System.out.println("Результаты сохранены. Переход к отображению результатов");
-            return new ModelAndView("redirect:/Hook");
-        }
-        System.out.println("Не выбран метод...");
-        return new ModelAndView("Home");
-    }*/
     @GetMapping("/ForUser")
     public ModelAndView userPage() {
         System.out.println("Отображение руководства пользователю");

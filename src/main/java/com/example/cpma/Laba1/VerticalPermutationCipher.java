@@ -77,4 +77,32 @@ public class VerticalPermutationCipher {
         writer.write(content);
         writer.close();
     }
+    public static char[][] textSpell(String text, int columns){
+        // Определение количества строк
+        int rows = (int) Math.ceil((double) text.length() / columns);
+
+        // Создание двумерного массива char
+        char[][] twoDCharArray = new char[rows][columns];
+
+        // Заполнение двумерного массива char
+        int index = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (index < text.length()) {
+                    twoDCharArray[i][j] = text.charAt(index++);
+                } else {
+                    twoDCharArray[i][j] = ' '; // Если символов не хватает, заполните другим символом
+                }
+            }
+        }
+
+        // Вывод двумерного массива char
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(twoDCharArray[i][j] + " ");
+            }
+            System.out.println();
+        }
+        return twoDCharArray;
+    }
 }

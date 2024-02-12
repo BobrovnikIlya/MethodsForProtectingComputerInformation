@@ -5,9 +5,18 @@ import java.util.ArrayList;
 public class Task {
     private int key = 1;
     private String text = "";
+    private char[][] TextSpell  = {};
     private ArrayList<Integer> permutation = new ArrayList<>();
     private String encrypted = "";
     private String decrypted = "";
+
+    public char[][] getTextSpell() {
+        return TextSpell;
+    }
+
+    public void setTextSpell(char[][] TextSpell) {
+        this.TextSpell = TextSpell;
+    }
 
     public String getText() {
         return text;
