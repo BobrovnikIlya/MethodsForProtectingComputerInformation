@@ -67,6 +67,40 @@ table, th, td {
     box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-#inputText{
-    width: 200px;
+.inputText{
+    width: 1280px;
+}
+
+.button-solve {
+    background-color: #222;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    width: 25%;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+.button-solve:hover:not(.active) {
+    background-color: #4CAF50;
+}
+.button {
+    background-color: #ffffff;
+    border-color: #222222;
+    border-style: solid;
+    color: #222222;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 20px 10px;
+    border-radius: 10px;
+}
+.button:active {
+    background: #4CAF50;
+    color: #ffffff;
+}
+.button:hover:not(.active) {
+    background-color: #222222;
+    color: #ffffff;
 }
