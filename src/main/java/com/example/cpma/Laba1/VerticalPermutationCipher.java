@@ -26,6 +26,7 @@ public class VerticalPermutationCipher {
     public static String encrypt(String text, ArrayList<Integer> permutation) {
         int[] keyArray = permutation.stream().mapToInt(Integer::intValue).toArray();
         int n = keyArray.length;
+
         int rows = (int) Math.ceil((double) text.length() / n);
         char[][] grid = new char[rows][n];
         int k = 0;

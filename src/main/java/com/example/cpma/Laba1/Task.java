@@ -39,6 +39,7 @@ public class Task {
     }
 
     public void setPermutation(ArrayList<Integer> permutation) {
+        this.permutation.clear();
         this.permutation = permutation;
     }
 

@@ -20,8 +20,8 @@ th {
 input, button {
     margin-bottom: 10px;
 }
-.button-row {
-    margin-top: 10px;
+button-row {
+    margin-top: 20px;
 }
 
 ul{
@@ -56,6 +56,7 @@ body {
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 .container {
@@ -85,7 +86,9 @@ button-solve {
 }
 .button-solve:hover:not(.active) {
     background-color: #4CAF50;
+    color: white;
 }
+
 .button {
     background-color: #ffffff;
     border-color: #222222;
