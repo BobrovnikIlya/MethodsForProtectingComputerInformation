@@ -16,6 +16,7 @@ public class Laba1Controller {
     String inputFile = "src/main/resources/input.txt"; // Имя файла с вводной строкой
     String encryptedFile = "src/main/resources/encrypted.txt"; // Файл для зашифрованной строки
     String decryptedFile = "src/main/resources/decrypted.txt"; // Файл для расшифрованной строки
+    String result = "";
     @GetMapping("/laba1")
     public ModelAndView viewLaba1() {
         System.out.println("Запуск страницы с первой лабой");
@@ -30,7 +31,7 @@ public class Laba1Controller {
         view.addObject("textInput", task.getText());
         view.addObject("numbers", task.getPermutation());
         view.addObject("inputKey", task.getKey());
-        view.addObject("textOutput", task.getEncrypted());
+        view.addObject("textOutput", result);
         System.out.println("Отображение страницы с первой лабой");
         return view;
     }
@@ -49,7 +50,13 @@ public class Laba1Controller {
     @PostMapping("/inputTable")
     public ModelAndView inputTable() {
         System.out.println("Заполнение таблицы");
-        return new ModelAndView("redirect:/laba1");
+
+
+        ModelAndView view = new ModelAndView("/laba1");
+        view.addObject("text", task.getText());
+        view.addObject("columns", task.getKey());
+
+        return view;
     }
 
     @PostMapping("/encryptedText")
@@ -59,7 +66,7 @@ public class Laba1Controller {
         task.setEncrypted(VerticalPermutationCipher.encrypt(task.getText(), task.getPermutation()));
         writeToFile(encryptedFile, task.getEncrypted());
         System.out.println("Зашифрованная строка сохранена в файл " + encryptedFile);
-
+        result = task.getEncrypted();
         return new ModelAndView("redirect:/laba1");
     }
 
@@ -70,7 +77,7 @@ public class Laba1Controller {
         task.setDecrypted(VerticalPermutationCipher.decrypt(task.getEncrypted(), task.getPermutation()));
         writeToFile(decryptedFile, task.getDecrypted());
         System.out.println("Расшифрованная строка сохранена в файл " + decryptedFile);
-
+        result = task.getDecrypted();
         return new ModelAndView("redirect:/laba1");
     }
 

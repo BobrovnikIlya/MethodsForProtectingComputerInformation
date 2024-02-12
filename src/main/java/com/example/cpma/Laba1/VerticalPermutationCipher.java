@@ -5,33 +5,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class VerticalPermutationCipher {
-    public static void main(String[] args) {
-        String inputFile = "src/main/resources/input.txt"; // Имя файла с вводной строкой
-        String encryptedFile = "src/main/resources/encrypted.txt"; // Файл для зашифрованной строки
-        String decryptedFile = "src/main/resources/decrypted.txt"; // Файл для расшифрованной строки
-
-        int key = 4;
-
-        ArrayList<Integer> permutation = new ArrayList<Integer>();// Порядок перестановки столбцов
-        permutation.addAll(Permutation(key));
-
-        try {
-            String inputString = readFromFile(inputFile);
-
-            // Шифрование
-            String encryptedString = encrypt(inputString, permutation);
-            writeToFile(encryptedFile, encryptedString);
-            System.out.println("Зашифрованная строка сохранена в файл " + encryptedFile);
-
-            // Расшифровка
-            String decryptedString = decrypt(encryptedString, permutation);
-            writeToFile(decryptedFile, decryptedString);
-            System.out.println("Расшифрованная строка сохранена в файл " + decryptedFile);
-        } catch (IOException e) {
-            System.err.println("Ошибка ввода/вывода");
-            e.printStackTrace();
-        }
-    }
     // Метод для генерации порядка столбцов
     public static ArrayList<Integer> Permutation(int maxNumber){
         ArrayList<Integer> randomNumbers = new ArrayList<>();

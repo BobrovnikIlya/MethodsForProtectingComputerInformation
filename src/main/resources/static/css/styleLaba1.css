@@ -71,7 +71,7 @@ table, th, td {
     width: 1280px;
 }
 
-.button-solve {
+button-solve {
     background-color: #222;
     border: none;
     color: white;

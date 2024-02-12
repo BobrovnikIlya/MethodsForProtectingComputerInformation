@@ -8,7 +8,7 @@
 </head>
 <body>
   <ul>
-    <li><a class="active" href="/Simplex">Лаба 1</a></li>
+    <li><a class="active" href="/laba1">Лаба 1</a></li>
     <li><a href="/Simplex">Лаба 2</a></li>
     <li><a href="/Hook">Лаба 3</a></li>
     <li><a href="/ForUser">Лаба 4</a></li>
@@ -26,7 +26,7 @@
       <form action="/inputKey" method="post">
         <p>Длина ключа</p>
         <input type="number" name="inputKey" th:value="${inputKey}" placeholder="Введите длину ключа">
-        <button type="submit">Сгенерировать</button>
+        <button class="button-solve" type="submit">Сгенерировать</button>
       </form>
     </div>
     <!-- Таблица ключей -->
@@ -40,24 +40,24 @@
 
     <table>
       <tbody>
-      <tr th:each="substring : ${#strings.abbreviate(textInput, (textInput.length() / inputKey)+1)}">
-        <td th:text="${substring}"></td>
-      </tr>
+<!--      <tr th:each="char, index: ${#strings.toList(text)}">
+        <td th:text="${char}" th:if="${index.index % columns == 0}"></td>
+      </tr>-->
       </tbody>
     </table>
 
     <!-- Buttons in a Row -->
     <div class="button-row">
       <form action="/inputTable" method="post">
-        <button>Заполнить таблицу</button>
+        <button class="button-solve">Заполнить таблицу</button>
       </form>
 
       <form action="/encryptedText" method="post">
-        <button>Шифровать текст</button>
+        <button class="button-solve">Шифровать текст</button>
       </form>
 
       <form action="/decryptedText" method="post">
-        <button>Расшифровать текст</button>
+        <button class="button-solve">Расшифровать текст</button>
       </form>
     </div>
 
