@@ -37,7 +37,6 @@ public class Laba1Controller {
         System.out.println("Отображение страницы с первой лабой");
         return view;
     }
-
     @PostMapping("/inputKey")
     public ModelAndView inputKey(@RequestParam("inputKey") String textInput) {
         System.out.println("Полученные данные: " + textInput);
@@ -48,7 +47,6 @@ public class Laba1Controller {
 
         return new ModelAndView("redirect:/laba1");
     }
-
     @PostMapping("/inputTable")
     public ModelAndView inputTable() {
         System.out.println("Заполнение таблицы");
@@ -57,7 +55,6 @@ public class Laba1Controller {
 
         return new ModelAndView("redirect:/laba1");
     }
-
     @PostMapping("/encryptedText")
     public ModelAndView encryptedText() throws IOException {
         System.out.println("Шифрование");
@@ -68,7 +65,6 @@ public class Laba1Controller {
         result = task.getEncrypted();
         return new ModelAndView("redirect:/laba1");
     }
-
     @PostMapping("/decryptedText")
     public ModelAndView decryptedText() throws IOException {
         System.out.println("Дешифрование");
@@ -78,17 +74,5 @@ public class Laba1Controller {
         System.out.println("Расшифрованная строка сохранена в файл " + decryptedFile);
         result = task.getDecrypted();
         return new ModelAndView("redirect:/laba1");
-    }
-    @GetMapping("/ForUser")
-    public ModelAndView userPage() {
-        System.out.println("Отображение руководства пользователю");
-        ModelAndView user = new ModelAndView("ForUser");
-        return user;
-    }
-    @GetMapping("/About")
-    public ModelAndView aboutPage() {
-        System.out.println("Отображение информации об авторе");
-        ModelAndView about = new ModelAndView("About");
-        return about;
     }
 }

@@ -23,46 +23,52 @@ public class VerticalPermutationCipher {
         return randomNumbers;
     }
     // Метод для шифрования строки по вертикальной перестановке
-    public static String encrypt(String input, ArrayList<Integer> permutation) {
-        System.out.println( permutation.size());
-        char[][] grid = new char[permutation.size()][input.length() / permutation.size()];
-        StringBuilder encrypted = new StringBuilder();
-
-        int index = 0;
-        for (int i = 0; i < permutation.size(); i++) {
-            for (int j = 0; j < input.length() / permutation.size(); j++) {
-                grid[permutation.get(i) - 1][j] = input.charAt(index++);
+    public static String encrypt(String text, ArrayList<Integer> permutation) {
+        int[] keyArray = permutation.stream().mapToInt(Integer::intValue).toArray();
+        int n = keyArray.length;
+        int rows = (int) Math.ceil((double) text.length() / n);
+        char[][] grid = new char[rows][n];
+        int k = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < n; j++) {
+                if (k < text.length()) {
+                    grid[i][j] = text.charAt(k++);
+                } else {
+                    grid[i][j] = ' ';
+                }
             }
         }
-
-        for (int i = 0; i < input.length() / permutation.size(); i++) {
-            for (int j = 0; j < permutation.size(); j++) {
-                encrypted.append(grid[j][i]);
+        StringBuilder result = new StringBuilder();
+        for (int key : keyArray) {
+            for (int i = 0; i < rows; i++) {
+                result.append(grid[i][key - 1]);
             }
         }
-
-        return encrypted.toString();
+        return result.toString();
     }
 
     // Метод для расшифровки строки по вертикальной перестановке
-    public static String decrypt(String input, ArrayList<Integer> permutation) {
-        char[][] grid = new char[permutation.size()][input.length() / permutation.size()];
-        StringBuilder decrypted = new StringBuilder();
+    public static String decrypt(String encryptedText, ArrayList<Integer> permutation) {
+        int[] keyArray = permutation.stream().mapToInt(Integer::intValue).toArray();
+        int n = keyArray.length;
+        int rows = (int) Math.ceil((double) encryptedText.length() / n);
+        char[][] grid = new char[rows][n];
+        int k = 0;
 
-        int index = 0;
-        for (int i = 0; i < input.length() / permutation.size(); i++) {
-            for (int j = 0; j < permutation.size(); j++) {
-                grid[j][i] = input.charAt(index++);
+        for (int key : keyArray) {
+            for (int i = 0; i < rows; i++) {
+                grid[i][key - 1] = encryptedText.charAt(k++);
             }
         }
-
-        for (int i = 0; i < permutation.size(); i++) {
-            for (int j = 0; j < input.length() / permutation.size(); j++) {
-                decrypted.append(grid[permutation.get(i) - 1][j]);
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] != 0) {
+                    result.append(grid[i][j]);
+                }
             }
         }
-
-        return decrypted.toString();
+        return result.toString();
     }
     // Метод для чтения строки из файла
     public static String readFromFile(String filename) throws IOException {
