@@ -1,18 +1,45 @@
-package com.example.cpma;
+package com.example.cpma.Laba1;
 
-import jakarta.servlet.http.HttpSession;
+import com.example.cpma.Laba1.Task;
+import com.example.cpma.Laba1.VerticalPermutationCipher;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
+
 @RestController
-public class MainController {
+public class Laba1Controller {
+    Task task;
     @GetMapping("/laba1")
     public ModelAndView viewLaba1() {
         System.out.println("Запуск страницы с первой лабой");
-        ModelAndView viewLaba1 = new ModelAndView("laba1");
+        System.out.println("Чтение предложения из файла");
+        task = new Task();
+        try {
+            task.setText(VerticalPermutationCipher.readFromFile("src/main/resources/input.txt"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ModelAndView view = new ModelAndView("laba1");
+        view.addObject("textInput", task.getText());
         System.out.println("Отображение страницы с первой лабой");
-        return viewLaba1;
+        return view;
     }
+
+    @PostMapping("/inputKey")
+    public ModelAndView inputKey(@RequestParam("inputKey") String textInput) {
+        System.out.println("Полученные данные: " + textInput);
+        int key = Integer.parseInt(textInput);
+        task.setKey(key);
+        task.setPermutation(VerticalPermutationCipher.Permutation(key));
+
+        ModelAndView laba = new ModelAndView("/laba1");
+        laba.addObject("numbers", task.getPermutation());
+        laba.addObject("inputKey", task.getKey());
+        laba.addObject("textInput", task.getText());
+        return laba;
+    }
+
 /*    @PostMapping("/redirect")
     public ModelAndView redirect(@RequestParam String option, @ModelAttribute Task task, HttpSession session) {
         System.out.println("Произведение расчетов...");

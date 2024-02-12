@@ -67,6 +67,6 @@ table, th, td {
     box-shadow:2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-#inputText{
-    width: 200px;
+.inputText{
+    width: 1280px;
 }

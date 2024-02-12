@@ -8,7 +8,7 @@
 </head>
 <body>
   <ul>
-    <li><a class="active" href="/Home">Лаба 1</a></li>
+    <li><a class="active" href="/Simplex">Лаба 1</a></li>
     <li><a href="/Simplex">Лаба 2</a></li>
     <li><a href="/Hook">Лаба 3</a></li>
     <li><a href="/ForUser">Лаба 4</a></li>
@@ -17,27 +17,23 @@
   <div class = "container">
     <!-- Text Input Field -->
     <p>Входной текст</p>
-    <input type="text" placeholder="" id = "inputText">
+
+      <input type="text" th:value="${textInput}" placeholder="" class = "inputText">
 
     <br>
     <!-- Input Field and Button -->
     <div>
-      <p>Длина ключа</p>
-      <input type="number" placeholder="Введите длину ключа">
-      <button>Сгенерировать</button>
+      <form action="/inputKey" method="post">
+        <p>Длина ключа</p>
+        <input type="number" name="inputKey" th:value="${inputKey}" placeholder="Введите длину ключа">
+        <button type="submit">Сгенерировать</button>
+      </form>
     </div>
     <!-- Two Tables -->
     <table>
-      <thead>
-      <tr>
-        <th>Table 1 Header 1</th>
-        <th>Table 1 Header 2</th>
-      </tr>
-      </thead>
       <tbody>
       <tr>
-        <td>Data 1</td>
-        <td>Data 2</td>
+        <td th:each="number : ${numbers}" th:text="${number}"></td>
       </tr>
       <!-- Add more rows as needed -->
       </tbody>
@@ -61,14 +57,17 @@
 
     <!-- Buttons in a Row -->
     <div class="button-row">
-      <button onclick="buttonClick(1)">Заполнить таблицу</button>
+      <button onclick="function buttonClick(number) {
+
+      }
+      buttonClick(1)">Заполнить таблицу</button>
       <button onclick="buttonClick(2)">Шифровать текст</button>
       <button onclick="buttonClick(3)">Расшифровать текст</button>
     </div>
 
     <!-- Text Input Field for Language -->
     <p>Результат операции</p>
-    <input type="text" placeholder="">
+    <input type="text" class = "inputText" placeholder="">
   </div>
 </body>
 </html>
