@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laba 1</title>
+  <link rel="stylesheet" th:href="@{css/styleLaba1.css}">
+</head>
+<body>
+  <ul>
+    <li><a class="active" href="/laba1">Лаба 1</a></li>
+    <li><a href="/Simplex">Лаба 2</a></li>
+    <li><a href="/Hook">Лаба 3</a></li>
+    <li><a href="/ForUser">Лаба 4</a></li>
+    <li><a href="/About">Лаба 5</a></li>
+  </ul>
+  <div class = "container">
+    <!-- Текстовое поле с предложением -->
+    <p>Входной текст</p>
+
+      <input type="text" th:value="${textInput}" placeholder="" class = "inputText">
+
+    <br>
+    <!-- Ввод значения кол-ва ключей -->
+    <div>
+      <form action="/inputKey" method="post">
+        <p>Длина ключа</p>
+        <input type="number" name="inputKey" th:value="${inputKey}" placeholder="Введите длину ключа">
+        <button class="button-solve" type="submit">Сгенерировать</button>
+      </form>
+    </div>
+    <!-- Таблица ключей -->
+    <table>
+      <tbody>
+      <tr>
+        <td th:each="number : ${numbers}" th:text="${number}"></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <tbody>
+      <tr th:each="row : ${charArray}">
+        <td th:each="char : ${row}"><span th:text="${char}"></span></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+    <!-- Buttons in a Row -->
+    <form action="/inputTable" method="post">
+      <button class="button-solve">Заполнить таблицу</button>
+    </form>
+    <form action="/encryptedText" method="post">
+      <button class="button-solve">Шифровать текст</button>
+    </form>
+    <form action="/decryptedText" method="post">
+      <button class="button-solve">Расшифровать текст</button>
+    </form>
+
+    <!-- Text Input Field for Language -->
+    <p>Результат операции</p>
+    <input type="text" class = "inputText" th:value="${textOutput}" placeholder="">
+  </div>
+</body>
+</html>
