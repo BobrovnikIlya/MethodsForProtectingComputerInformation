@@ -16,15 +16,26 @@ public class SingleСipher {
         for (char c : input.toCharArray()) {
             characters.add(c);
         }
-
         Collections.shuffle(characters, new Random());
-
         StringBuilder shuffledString = new StringBuilder();
         for (char c : characters) {
             shuffledString.append(c);
         }
-
         return shuffledString.toString();
+    }
+    public static String shuffleSloganString(String slogan, String originalAlphabet) {
+        String inputString = shuffleString(originalAlphabet);
+        // Удаляем все символы из строки inputString, которые есть в слове-лозунге
+        for (char c : slogan.toCharArray()) {
+            inputString = inputString.replace(String.valueOf(c), "");
+        }
+        // Строка для хранения результата
+        StringBuilder result = new StringBuilder();
+        // Добавляем слово-лозунг в начало строки
+        result.append(slogan);
+        // Добавляем обработанную строку после слова-лозунга
+        result.append(inputString);
+        return result.toString();
     }
     public static String encrypt(String text, Map<Character, Character> encryptionMap) {
         StringBuilder encryptedText = new StringBuilder();

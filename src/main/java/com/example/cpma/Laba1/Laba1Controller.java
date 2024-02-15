@@ -13,9 +13,9 @@ import static com.example.cpma.Laba1.VerticalPermutationCipher.writeToFile;
 @RestController
 public class Laba1Controller {
     Task task = new Task();
-    String inputFile = "src/main/resources/input.txt"; // Имя файла с вводной строкой
-    String encryptedFile = "src/main/resources/encrypted.txt"; // Файл для зашифрованной строки
-    String decryptedFile = "src/main/resources/decrypted.txt"; // Файл для расшифрованной строки
+    String inputFile = "src/main/resources/files/laba1/input.txt"; // Имя файла с вводной строкой
+    String encryptedFile = "src/main/resources/files/laba1/encrypted.txt"; // Файл для зашифрованной строки
+    String decryptedFile = "src/main/resources/files/laba1/decrypted.txt"; // Файл для расшифрованной строки
     String result = "";
     @GetMapping("/laba1")
     public ModelAndView viewLaba1() {

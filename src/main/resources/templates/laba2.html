@@ -11,35 +11,49 @@
 <div>
   <ul>
     <li><a href="/laba1">Лаба 1</a></li>
-    <li><a class="active" href="/files/laba2">Лаба 2</a></li>
+    <li><a class="active" href="/laba2">Лаба 2</a></li>
     <li><a href="/laba3">Лаба 3</a></li>
     <li><a href="/laba4">Лаба 4</a></li>
     <li><a href="/laba5">Лаба 5</a></li>
   </ul>
   <div class="container">
-    <p>Входной текст</p>
-    <input type="text" placeholder="Начальный текст">
-    <div class="button-group">
-      <button>Загрузить сообщение</button>
-      <button>Шифровать сообщение</button>
-      <button>Расшифровать сообщение</button>
-      <button>Загрузить шифр</button>
-    </div>
-    <p>Выбор шифрования</p>
-    <select>
-      <option value="1">Одноалфавитный шифр</option>
-      <option value="2">Многоалфавитный шифр</option>
-    </select>
 
+    <p>Входной текст</p>
+      <form action="/encrypt" method="post">
+        <input th:value="${textInput}" name = "textInput" type="text" placeholder="Начальный текст">
+    <!-------------------------------------------------------------------------->
+        <button >Шифровать сообщение</button>
+      </form>
+      <form action="/decrypt" method="post">
+        <button>Расшифровать сообщение</button>
+      </form>
+      <form action="/loadData" method="post">
+        <button>Загрузить сообщение</button>
+      </form>
+        <form action="/loadCipher" method="post">
+          <button>Загрузить шифр</button>
+
+
+    <!-------------------------------------------------------------------------->
+    <p>Выбор шифрования</p>
+
+    <select id="dropdown" name="option">
+      <option value="mono">Одноалфавитный шифр</option>
+      <option value="poli">Многоалфавитный шифр</option>
+    </select>
+     <!-------------------------------------------------------------------------->
       <div class="checkbox-label">
         <label>Лозунг</label>
-        <input type="checkbox" id="checkbox" class="checkbox">
+        <input name="isChecked" type="checkbox" id="checkbox" class="checkbox">
       </div>
-    <div id="text-field" style="display: none;">
-      <input type="text" id="input" placeholder="Введите лозунг">
-    </div>
+      <div id="text-field" style="display: none;">
+        <input type="text" id="input" name="slogan" placeholder="Введите лозунг">
+      </div>
+        </form>
+
+    <!-------------------------------------------------------------------------->
     <p>Результат</p>
-    <input type="text" placeholder="Тут вывод результата">
+    <input th:value="${textOutput}" type="text" placeholder="Тут вывод результата">
   </div>
 </div>
 

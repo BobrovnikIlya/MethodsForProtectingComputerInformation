@@ -9,9 +9,18 @@ public class Task {
     private String encrypted = "";
     private String decrypted = "";
     private String originalAlphabet = "";
+    private String slogan = "";
     private String cipherAlphabet = "";
     public Map<Character, Character> encryptionMap = new HashMap<>();
     public Map<Character, Character> decryptionMap = new HashMap<>();
+
+    public String getSlogan() {
+        return slogan;
+    }
+
+    public void setSlogan(String slogan) {
+        this.slogan = slogan;
+    }
 
     public Map<Character, Character> getEncryptionMap() {
         return encryptionMap;
