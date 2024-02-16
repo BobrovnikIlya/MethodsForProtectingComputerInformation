@@ -37,9 +37,9 @@
     <!-------------------------------------------------------------------------->
     <p>Выбор шифрования</p>
 
-    <select id="dropdown" name="option">
-      <option value="mono">Одноалфавитный шифр</option>
-      <option value="poli">Многоалфавитный шифр</option>
+    <select id="dropdown" name="selectedOption">
+      <option value="mono" th:selected="${selectedOption == 'mono'}">Одноалфавитный шифр</option>
+      <option value="poli" th:selected="${selectedOption == 'poli'}">Многоалфавитный шифр</option>
     </select>
      <!-------------------------------------------------------------------------->
       <div class="checkbox-label">
