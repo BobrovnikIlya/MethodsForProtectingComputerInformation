@@ -2,6 +2,7 @@ package com.example.cpma.Laba2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Task {
@@ -11,8 +12,17 @@ public class Task {
     private String originalAlphabet = "";
     private String slogan = "";
     private String cipherAlphabet = "";
-    public Map<Character, Character> encryptionMap = new HashMap<>();
-    public Map<Character, Character> decryptionMap = new HashMap<>();
+    private List<String> poliAlphabet = new ArrayList<>();
+    private Map<Character, Character> encryptionMap = new HashMap<>();
+    private Map<Character, Character> decryptionMap = new HashMap<>();
+
+    public List<String> getPoliAlphabet() {
+        return poliAlphabet;
+    }
+
+    public void setPoliAlphabet(List<String> poliAlphabet) {
+        this.poliAlphabet = poliAlphabet;
+    }
 
     public String getSlogan() {
         return slogan;

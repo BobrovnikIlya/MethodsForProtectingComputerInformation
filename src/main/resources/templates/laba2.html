@@ -19,17 +19,18 @@
   <div class="container">
 
     <p>Входной текст</p>
-      <form action="/encrypt" method="post">
+      <form action="/loadData" method="post">
         <input th:value="${textInput}" name = "textInput" type="text" placeholder="Начальный текст">
     <!-------------------------------------------------------------------------->
+        <button>Загрузить сообщение</button>
+      </form>
+    <form action="/encrypt" method="post">
         <button >Шифровать сообщение</button>
       </form>
       <form action="/decrypt" method="post">
         <button>Расшифровать сообщение</button>
       </form>
-      <form action="/loadData" method="post">
-        <button>Загрузить сообщение</button>
-      </form>
+
         <form action="/loadCipher" method="post">
           <button>Загрузить шифр</button>
 
