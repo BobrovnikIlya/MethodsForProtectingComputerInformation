@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laba 3</title>
+  <link rel="stylesheet" th:href="@{css/styleLaba3.css}">
+  <link rel="stylesheet" th:href="@{css/main.css}">
+</head>
+<body>
+<div>
+  <ul>
+    <li><a href="/laba1">Лаба 1</a></li>
+    <li><a href="/laba2">Лаба 2</a></li>
+    <li><a class="active"  href="/laba3">Лаба 3</a></li>
+    <li><a href="/laba4">Лаба 4</a></li>
+    <li><a href="/laba5">Лаба 5</a></li>
+  </ul>
+
+  <div class="container">
+
+    <p>Входной текст</p>
+      <form action="/loadData" method="post">
+        <input th:value="${textInput}" name = "textInput" type="text" placeholder="Начальный текст">
+    <!-------------------------------------------------------------------------->
+        <button>Загрузить сообщение</button>
+      </form>
+    <form action="/encrypt" method="post">
+        <button >Шифровать сообщение</button>
+      </form>
+      <form action="/decrypt" method="post">
+        <button>Расшифровать сообщение</button>
+      </form>
+        <form action="/loadCipher" method="post">
+          <button>Загрузить шифр</button>
+        </form>
+    <!-------------------------------------------------------------------------->
+    <table>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+      </tr>
+    </table>
+    <table>
+      <tbody>
+      <tr th:each="row : ${charArray}">
+        <td th:each="char : ${row}"><span th:text="${char}"></span></td>
+      </tr>
+      </tbody>
+    </table>
+    <!-------------------------------------------------------------------------->
+    <p>Результат</p>
+    <input th:value="${textOutput}" type="text" placeholder="Тут вывод результата">
+  </div>
+</div>
+</body>
+</html>
