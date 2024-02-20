@@ -17,6 +17,7 @@ public class Laba3Controller {
     Task task = new Task();
     boolean enc = true;
     boolean loadCipher = false;
+    boolean loadtext = false;
     String inputFile = "src/main/resources/files/laba3/input"; // Имя файла с вводной строкой
     String alphabetFile = "src/main/resources/files/laba3/originalAlphabet.txt"; //
     String cipherFile = "src/main/resources/files/laba3/cipherAlphabet.txt"; //
@@ -28,11 +29,17 @@ public class Laba3Controller {
         ModelAndView view = new ModelAndView("laba3");
 
         view.addObject("textInput", task.getText());
+
+        if(loadtext)
+            view.addObject("spellMessage", MonophonicSubstitutionEncoder.getFrequencies(task.getText()));
+
         if(loadCipher)
             view.addObject("cipherAlphabet", task.getCipherAlphabet());
 
-        if(enc)
+        if(enc){
             view.addObject("textOutput", task.getEncrypted());
+            view.addObject("spellEncrypted", MonophonicSubstitutionEncoder.getFrequencies(task.getEncrypted()));
+        }
         else
             view.addObject("textOutput", task.getDecrypted());
 
@@ -45,6 +52,7 @@ public class Laba3Controller {
         }else{
             task.setText(textInput);
         }
+        loadtext = true;
         return new ModelAndView("redirect:/laba3");
     }
     @PostMapping("/loadCipher3")
