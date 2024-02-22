@@ -20,12 +20,12 @@
     <div class="container">
         <form th:object="${task}" action="/handleForm" method="post">
             <input th:value="${task.getText()}" name="textInput" type="text" placeholder="Начальный текст">
-
-            <button name="btn" type="submit" value="loadMessage">Загрузить сообщение</button>
-            <button name="btn" type="submit" value="encryptMessage">Шифровать сообщение</button>
-            <button name="btn" type="submit" value="decryptMessage">Расшифровать сообщение</button>
-            <button name="btn" type="submit" value="loadMatrix">Загрузить матрицу</button>
-
+            <div id="button-group">
+                <button name="btn" type="submit" value="loadMessage">Загрузить сообщение</button>
+                <button name="btn" type="submit" value="encryptMessage">Шифровать сообщение</button>
+                <button name="btn" type="submit" value="decryptMessage">Расшифровать сообщение</button>
+                <button name="btn" type="submit" value="loadMatrix">Загрузить матрицу</button>
+            </div>
             <table>
                 <tr th:each="row : ${task.getKeyMatrix()}">
                     <td th:each="cell : ${row}" th:text="${cell}"></td>
@@ -33,7 +33,8 @@
             </table>
 
             <p>Результат</p>
-            <input th:value="${task.getResult()}" type="text" placeholder="Тут вывод результата"></input>
+            <textarea th:text="${task.getResult()}" type="text" id="textarea"
+                      placeholder="Тут вывод результата"></textarea>
         </form>
     </div>
 </div>

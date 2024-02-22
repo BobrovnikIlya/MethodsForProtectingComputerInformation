@@ -37,7 +37,7 @@ public class Laba4Controller {
                 task.setResult(task.getEncrypted());
                 break;
             case "decryptMessage":
-                task.setDecrypted(AnalyticalTransformations.encryptString(task.getKeyMatrix(), task.getEncrypted(), task.getAlphabet(), n));
+                task.setDecrypted(AnalyticalTransformations.decryptString(task.getKeyMatrix(), task.getEncrypted(), task.getAlphabet(), n));
                 task.setResult(task.getDecrypted());
                 break;
             case "loadMatrix":

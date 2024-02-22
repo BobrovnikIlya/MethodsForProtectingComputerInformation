@@ -22,8 +22,6 @@ public class AnalyticalTransformations {
             System.out.println("Матрица необратима");
             keyMatrix = generateKeyMatrix(n);
         }
-        System.out.println("Матрица:");
-        printMatrix(keyMatrix);
         return keyMatrix;
     }
     // Метод для удаления n символов с конца строки
@@ -154,12 +152,11 @@ public class AnalyticalTransformations {
     // Метод для шифрования строки с использованием ключевой матрицы
     public static String encryptString(int[][] keyMatrix, String inputString, String alphabet, int n) {
         int [] array = getIndexArray(inputString, alphabet, n);
-        System.out.println("Индексы букв в тексте:");
+        System.out.println("Индексы букв в тексте");
 
         //Разбиение массива
-        System.out.println("Преобразование массива:");
+        System.out.println("Преобразование массива");
         int [][] bArray = convertToMultiArray(array, n);
-        printMatrix(bArray);
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < bArray.length; i++) {

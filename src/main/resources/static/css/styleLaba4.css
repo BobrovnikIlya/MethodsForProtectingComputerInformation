@@ -3,4 +3,8 @@ textarea, input {
     margin-bottom: 10px;
     padding: 5px;
 }
+#textarea{
+    height: 100px;
+}
+
 
