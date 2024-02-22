@@ -56,18 +56,4 @@ public class MatrixUtils {
 
         return minor;
     }
-
-    public static void main(String[] args) {
-        int[][] matrix = {
-                {1, 2, 3},
-                {0, 1, 4},
-                {5, 6, 0}
-        };
-
-        if (isMatrixInvertible(matrix)) {
-            System.out.println("Матрица обратима");
-        } else {
-            System.out.println("Матрица необратима");
-        }
-    }
 }
