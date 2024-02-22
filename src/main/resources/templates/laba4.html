@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laba 4</title>
+    <link rel="stylesheet" th:href="@{css/main.css}">
+    <link rel="stylesheet" th:href="@{css/styleLaba4.css}">
+</head>
+<body>
+<div>
+    <ul>
+        <li><a href="/laba1">Лаба 1</a></li>
+        <li><a href="/laba2">Лаба 2</a></li>
+        <li><a href="/laba3">Лаба 3</a></li>
+        <li><a class="active" href="/laba4">Лаба 4</a></li>
+        <li><a href="/laba5">Лаба 5</a></li>
+    </ul>
+
+    <div class="container">
+        <form th:object="${task}" action="/handleForm" method="post">
+            <input th:value="${task.getText()}" name="textInput" type="text" placeholder="Начальный текст">
+
+            <button name="btn" type="submit" value="loadMessage">Загрузить сообщение</button>
+            <button name="btn" type="submit" value="encryptMessage">Шифровать сообщение</button>
+            <button name="btn" type="submit" value="decryptMessage">Расшифровать сообщение</button>
+            <button name="btn" type="submit" value="loadMatrix">Загрузить матрицу</button>
+
+            <table>
+                <tr th:each="row : ${task.getKeyMatrix()}">
+                    <td th:each="cell : ${row}" th:text="${cell}"></td>
+                </tr>
+            </table>
+
+            <p>Результат</p>
+            <input th:value="${task.getResult()}" type="text" placeholder="Тут вывод результата"></input>
+        </form>
+    </div>
+</div>
+</body>
+</html>

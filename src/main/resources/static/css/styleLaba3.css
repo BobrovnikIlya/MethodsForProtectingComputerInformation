@@ -1,8 +1,4 @@
-.container {
-    margin: 0 auto;
-    padding: 20px;
-}
-input, select {
+input, select, textarea {
     width: 99%;
     margin-bottom: 10px;
     padding: 5px;
